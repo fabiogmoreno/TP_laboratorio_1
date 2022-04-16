@@ -13,10 +13,8 @@
 
 #define TRUE 1
 #define FALSE 0
-///@brief Proceso a declarar variable de la firma para la funcion aritmetica
-///
-///
 
+///se declara funcion para realizar los calculo aritmetico
 float TarjetaDebito(int km,int precio);
 float TarjetaCredito(int km,int precio);
 float Bitcoin(int km,int precio);
@@ -31,35 +29,30 @@ float DiferenciadePrecio(int precioA,int precioL);
 
 int main()
 {setbuf(stdout,NULL);
-///@brief En la funcion main se procede a realizar menu y abm de una agencia de avion
-/// @param 1.Declaraciones de variable que subdivide su funcion:
-/// @param 2.Declaracion variable repetir=true para el siclo doWhile ,de lo contrario se sale con repetir=false
-/// @param 3
-
-
+///variable para el menu:dentro de do while y switch
     char repetir = TRUE;
     int opcion;
-
+///variables para ingreso de datos de Kilometro y Precio de Aerolinea y Latam
     int KM=0;
     int precioLatam=0,precioAerolinea=0;
+///variables para calculo aritmetico
     float DebitoDescuento10A=0,DebitoDescuento10L=0;
     float CreditoInteres25A=0,CreditoInteres25L=0;
     float BitcoinA=0,BitcoinL=0;
     float PrecioUnitarioA=0,PrecioUnitarioL=0;
     float Diferencia=0;
-
+///se crea una bandera en la opcion 4 dentro del switch ,para habilitar despues la opcion 5 carga forzada
     int Bandera=0;
-    //variables para datos forzados
+///variables:para carga forzada
     int ForzadaKM=7090,ForzadaPrecioL=159339,ForzadaPrecioA=162965;
     float FDebitoDescuento10A=0,FDebitoDescuento10L=0;
     float FCreditoInteres25A=0,FCreditoInteres25L=0;
     float FBitcoinA=0,FBitcoinL=0;
     float FPrecioUnitarioA=0,FPrecioUnitarioL=0;
     float FDiferencia=0;
+ ///se crea el do while con la condicion true y false,con el funcionamiento de trabajar con el menu abm
     do {
-        //system("cls");
-
-        // Texto del menú
+       ///se crea varios sprintf para presentar una imagen de menu
         printf("\n\n\t\t\tMenu de Opciones\n");
         printf("\t\t\t----------------\n");
         printf("\n\t1. Ingresar KM:(%dKM)\n ",KM);
@@ -68,7 +61,7 @@ int main()
         printf("\t4. Informar Resultados\n");
         printf("\t5. Carga forzada de datos\n");
         printf("\t0. SALIR\n");
-
+        ///se ingresan en la 6 opciones switch para el proceso del abm
         printf("\n\tIngrese una opcion: ");
         scanf("%d", &opcion);
 
@@ -76,7 +69,7 @@ int main()
         switch (opcion) {
             case 1:
 
-                // Instrucciones para sumar dos números
+                /// En la primera opcion se ingresa el Km correspondiente
                 printf("\t\tIngrese el KM: ");
                 scanf("%d", &KM);
                 printf("\t---------------------------\n");
@@ -85,7 +78,7 @@ int main()
                 break;
 
             case 2:
-
+            	///En la segunda opcion se ingresa los precion de Aerolinea y Latam
                 printf("\t\tIngrese el precio del vuelo Aerolinea: ");
                 scanf("%d", &precioAerolinea);
                 printf("\t\tIngrese el precio del vuelo Latam: ");
@@ -95,6 +88,7 @@ int main()
                 break;
 
             case 3:
+            	///En la 3ra opcion tiene que realizar calculo,si la condicion de previamente alla ingresado el KM y los precio de Latam y Aerolinea
             	if(KM==0 && precioAerolinea==0 && precioLatam==0)
             	{
             		printf("......>No realizaste cargas de Kilometro y los precio tipo de vuelos cargados completos previamente.Enter para volver al Menu");
@@ -130,7 +124,7 @@ int main()
                 break;
 
 			case 4:
-
+				///el la 4ta opcion se mostrara el informe si en la opcion 3 se calculo, sino te muestra un mensaje que vuelva al menu
 				if(DebitoDescuento10A==0 && DebitoDescuento10L==0 && CreditoInteres25A==0 && CreditoInteres25L==0 && BitcoinA==0 && BitcoinL==0 && PrecioUnitarioA==0 && PrecioUnitarioL==0 && Diferencia==0)
 				            				{
 				            				printf(".............>Para esta opcion tiene que realizar calculo.Enter para volver al Menu");
@@ -156,6 +150,7 @@ int main()
                 system("pause>nul");
                 break;
 			case 5:
+				///se realiza carga de datos forzados si la opcion 4 realizo su funcionamiento sino se procede volver al menu
 				if(Bandera==0)
 				{
 					printf("No realizaste procedimiento anteriores");
@@ -187,6 +182,7 @@ int main()
 				 system("pause>nul");
 				break;
             case 0:
+            	///En la opcion 0 se procede a finalizar el switch y el do while
             	repetir = FALSE;
             	break;
         }
@@ -194,7 +190,12 @@ int main()
 
     return 0;
 }
-//Funcion taarjeta del descuento 10% debito:
+///@brief En la funcion float TarjetaDebito se procede a realizar calculo del descuento del 10 porciento con km y precio
+/// @param se declara variable porcentaje10 y descuento
+/// @param con porcentaje10 se sacara el 10 por ciento
+/// @param con descuento se calculara el descuento del 10 por ciento
+/// @return se retornara en descuento
+
 float TarjetaDebito(int km,int precio)
 {
 	float descuento;
@@ -205,6 +206,11 @@ float TarjetaDebito(int km,int precio)
 
 	return descuento;
 }
+///@brief En la funcion float TarjetaCredito se procede a realizar calculo de interes del  25 porciento con km y precio
+/// @param se declara variable interes y porcentaje25
+/// @param con porcentaje25 se calcula 25 por ciento del km x precio
+/// @param con interes se calculara el incremento  del 25 por ciento
+/// @return se retornara en interes
 
 float TarjetaCredito(int km,int precio)
 {
@@ -217,6 +223,11 @@ interes=((float)km*precio)+porcentaje25;
 return interes;
 
 }
+///@brief En la funcion float Bitcoin se procede a realizar calculo   km y precio igualando el total de bitcoin
+/// @param se declara variable precioUnitario y calculoBitcoin
+/// @param con precioUnitario se calcula Km por Precio
+/// @param con CalculoBitcoin se calculara el valor del mismo con precio unitario
+/// @return   se retornara en CalculoBitcoin
 
 float Bitcoin(int km,int precio)
 {
@@ -228,6 +239,10 @@ CalculoBitcoin=4606954.55/(precioUnitario*100);
 
 return CalculoBitcoin;
 }
+///@brief En la funcion float PrecioUnitario  se procede a realizar solamente con km por  precio
+/// @param se declara variable PrecioUnitario
+/// @param con PrecioUnitario se calcula el Km x precio
+/// @return   se retornara en PrecioUnitario
 
 float PrecioUnitario(int km,int precio)
 {
@@ -235,6 +250,10 @@ float PrecioUnitario;
 PrecioUnitario=precio*km;
 return PrecioUnitario;
 }
+///@brief En la funcion float DiferenciadePrecio  se calcularan el precio de Latam menos Aerolinea
+/// @param se declara variable diferencia
+/// @param con diferencia se calcula el precio de Latam menos Aerolinea
+/// @return   se retornara en diferencia
 float DiferenciadePrecio(int precioA,int precioL)
 {
 float diferencia;
